@@ -9,6 +9,15 @@ function HashTable() {
         return hash % 37
     }
 
+    let djb2HashCode = function(key) {
+        let hash = 5381
+        for(let i=0; i < key.length; i++){
+            hash = hash * 33 + key.charCodeAt(i)
+        }
+        
+        return hash % 1013
+    }
+
     this.put = function(key,value) {
         let position = loseloseHashCode(key)
         table[position] = value
